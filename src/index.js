@@ -46,6 +46,16 @@ app.get('/client', (req, res) => {
     });
 });
 
+app.get('client', (req, res) => {
+  res.json({
+    client: {
+      id: 123,
+      name: 'Client Exemple',
+      email: 'client@client.cicd'
+      }
+    });
+});
+
 // Démarrage du serveur
 app.listen(PORT, () => {
   console.log(`🚀 API démarrée sur http://localhost:${PORT} (${NODE_ENV})`);
