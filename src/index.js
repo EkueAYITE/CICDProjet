@@ -36,6 +36,16 @@ app.get('/products', (req, res) => {
   });
 });
 
+app.get('/client', (req, res) => {
+  res.json({
+    client: {
+      id: 123,
+      name: 'Client Exemple',
+      email: 'client@client.cicd'
+      }
+    });
+});
+
 app.get('client', (req, res) => {
   res.json({
     client: {
