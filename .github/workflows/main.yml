@@ -1,0 +1,33 @@
+name: CI - Pull Request Validation
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Linter le code
+        run: npm run lint
+
+      - name: Compiler TypeScript
+        run: npm run build
+
+      # Optionnel : tests unitaires
+      - name: Lancer les tests
+        run: npm test
+        continue-on-error: false
