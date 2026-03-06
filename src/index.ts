@@ -1,15 +1,15 @@
-require('dotenv').config();
-const express = require('express');
+import 'dotenv/config';
+import express, { Request, Response } from 'express';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Middleware
 app.use(express.json());
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/', (_req: Request, res: Response) => {
   res.json({
     message: "Bienvenue sur l'API CICD",
     version: '1.0.0',
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/health', (req, res) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -26,7 +26,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-app.get('/products', (req, res) => {
+app.get('/products', (_req: Request, res: Response) => {
   res.json({
     products: [
       { id: 1, name: 'Produit A', price: 19.99 },
@@ -36,27 +36,22 @@ app.get('/products', (req, res) => {
   });
 });
 
-app.get('/client', (req, res) => {
+app.get('/client', (_req: Request, res: Response) => {
   res.json({
     client: {
       id: 123,
       name: 'Client Exemple',
-      email: 'client@client.cicd'
-      }
-    });
+      email: 'client@client.cicd',
+    },
+  });
 });
 
-app.get('client', (req, res) => {
-  res.json({
-    client: {
-      id: 123,
-      name: 'Client Exemple',
-      email: 'client@client.cicd'
-      }
-    });
-});
+// Export pour les tests
+export { app };
 
-// Démarrage du serveur
-app.listen(PORT, () => {
-  console.log(`🚀 API démarrée sur http://localhost:${PORT} (${NODE_ENV})`);
-});
+// Démarrage du serveur (pas en mode test)
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 API démarrée sur http://localhost:${PORT} (${NODE_ENV})`);
+  });
+}

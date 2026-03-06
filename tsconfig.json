@@ -2,10 +2,13 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
     "allowJs": true,
-    "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*", "eslint.config.mjs"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
