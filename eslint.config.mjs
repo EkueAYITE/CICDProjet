@@ -12,7 +12,7 @@ export default tseslint.config(
         ...globals.node,
       },
       parserOptions: {
-        project: true,
+        project: "./tsconfig.eslint.json",
       },
     },
     rules: {

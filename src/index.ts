@@ -12,7 +12,7 @@ app.use(express.json());
 app.get('/', (_req: Request, res: Response) => {
   res.json({
     message: "Bienvenue sur l'API CICD",
-    version: '1.0.0',
+    version: '1.0.4',
     documentation: '/health, /client /products',
   });
 });
