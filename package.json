@@ -11,12 +11,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build": "tsc",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "docker:build": "docker-compose build",
-    "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down",
-    "docker:push": "docker-compose build && docker-compose push"
+    "ts": "tsc",
+    "prepare": "husky",
+    "test": "echo \"test\""
   },
   "keywords": [
     "api",
@@ -39,7 +36,8 @@
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.3.0",
-    "jest": "^29.7.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "supertest": "^7.0.0",
     "tsx": "^4.7.0",
@@ -47,5 +45,11 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.55.0"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts,tsx,json}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
