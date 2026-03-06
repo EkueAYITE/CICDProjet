@@ -52,7 +52,3 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/cicd-api:${{ steps.version.outputs.version }}
             ${{ secrets.DOCKERHUB_USERNAME }}/cicd-api:latest
 
-2. Créer le dépôt sur Docker Hub
-Sur hub.docker.com, cliquer sur Create Repository
-Nommer le dépôt cicd-api (ou garder ce nom dans le workflow)
-3. Déclencher le workflo
