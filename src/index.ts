@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
+import { version } from '../package.json';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -12,8 +13,8 @@ app.use(express.json());
 app.get('/', (_req: Request, res: Response) => {
   res.json({
     message: "Bienvenue sur l'API CICD",
-    version: '1.0.4',
-    documentation: '/health, /client /products',
+    version,
+    documentation: '/health, /client, /products',
   });
 });
 

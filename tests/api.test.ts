@@ -1,5 +1,6 @@
 import request from 'supertest';
 import { app } from '../src/index';
+import { version } from '../package.json';
 
 describe('API CICD', () => {
   describe('GET /', () => {
@@ -9,8 +10,8 @@ describe('API CICD', () => {
       expect(response.status).toBe(200);
       expect(response.body).toMatchObject({
         message: "Bienvenue sur l'API CICD",
-        version: '1.0.0',
-        documentation: '/health, /products',
+        version,
+        documentation: '/health, /client, /products',
       });
     });
   });
